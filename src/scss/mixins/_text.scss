@@ -6,6 +6,7 @@
 	font-weight: v.$fw-regular;
 	line-height: 27px;
 	color: v.$accent;
+	text-align: right;
 
 	@media(min-width: v.$md) {
 		font-size: 55px;
