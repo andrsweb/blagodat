@@ -1,18 +1,30 @@
 @use '../vars/vars' as v;
 
-@mixin accentText() {
+@mixin accentText($size: null) {
 	font-family: v.$ff-add;
-	font-size: 39px;
 	font-weight: v.$fw-regular;
-	line-height: 27px;
 	color: v.$accent;
 	text-align: right;
 
-	@media(min-width: v.$md) {
-		font-size: 55px;
-		line-height: 46px;
+	@if $size == sm {
+		font-size: 37px;
+		line-height: 27px;
+
+		@media (min-width: v.$md) {
+			font-size: 47px;
+			line-height: 40px;
+		}
+	} @else {
+		font-size: 39px;
+		line-height: 27px;
+
+		@media (min-width: v.$md) {
+			font-size: 55px;
+			line-height: 46px;
+		}
 	}
 }
+
 
 @mixin text() {
 	font-family: v.$ff;
