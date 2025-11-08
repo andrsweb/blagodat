@@ -1,0 +1,86 @@
+@use '../../../../../scss/vars/vars.scss' as v;
+
+.child {
+	padding: 0 0 20px;
+
+	@media(min-width: v.$md) {
+		padding: 0 0 50px;
+	}
+
+	&-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 40px;
+
+
+		@media(min-width: v.$md) {
+			gap: 53px;
+		}
+	}
+
+	&-top {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+		border-top: 1px solid v.$brown;
+		padding-top: 45px;
+
+		@media(min-width: v.$md) {
+			padding-top: 45px;
+		}
+
+		@media(min-width: v.$lg) {
+			gap: 20px;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		&-left {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			@media(min-width: v.$md) {
+				max-width: 581px;
+			}
+		}
+
+		&-right {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			@media(min-width: v.$md) {
+				max-width: 560px;
+			}
+		}
+	}
+
+	&-bottom {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 25px;
+
+		@media(min-width: v.$md) {
+			gap: 30px;
+			flex-direction: row;
+		}
+
+		img {
+			border-radius: 8px;
+			width: 100%;
+
+			@media(min-width: v.$md) {
+				width: 33.333%;
+			}
+		}
+	}
+}
