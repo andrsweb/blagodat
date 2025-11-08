@@ -8,5 +8,5 @@
 	border: 0;
 	outline: none;
 	cursor: pointer;
-	transition: transform ease v.$tr;
+	transition: transform ease v.$tr, opacity ease v.$tr;
 }
