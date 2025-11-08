@@ -8,5 +8,8 @@
 //Mixins
 @forward 'mixins/mixins';
 
-// Utils
-@forward 'utils/placeholders/placeholders';
+// Ui
+@forward 'ui/button';
+
+//sections
+@forward  '../html/template-parts/sections/home/hero/hero';

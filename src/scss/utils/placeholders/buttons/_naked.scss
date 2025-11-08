@@ -1,8 +1,12 @@
 @use '../../../vars/vars.scss' as v;
 
-%button {
+%naked-button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background: v.$white;
+	border: 0;
+	outline: none;
+	cursor: pointer;
+	transition: transform ease v.$tr;
 }
