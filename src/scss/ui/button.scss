@@ -3,4 +3,34 @@
 
 .button {
 	@extend %naked-button;
+
+	&.blue {
+		min-width: 201px;
+		padding: 14px 25px;
+		border-radius: 500px;
+		background-color: transparent;
+		font-family: v.$ff;
+		font-size: 13px;
+		border: 1px solid v.$blue;
+		font-weight: v.$fw-regular;
+		line-height: 16px;
+		color: v.$blue;
+		text-transform: uppercase;
+
+		&:active {
+			transform: scale(0.9);
+		}
+
+		&.fill {
+			background-color: v.$blue;
+			color: v.$white;
+		}
+
+		@media(min-width: v.$md) {
+			font-size: 15px;
+			line-height: 18px;
+		}
+	}
+
+
 }

@@ -11,5 +11,10 @@
 // Ui
 @forward 'ui/button';
 
+//components
+@forward  '../html/template-parts/components/title/title';
+
 //sections
 @forward  '../html/template-parts/sections/home/hero/hero';
+@forward  '../html/template-parts/sections/home/about/about';
+

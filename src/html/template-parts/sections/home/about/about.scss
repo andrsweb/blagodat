@@ -1,0 +1,86 @@
+@use '../../../../../scss/vars/vars.scss' as v;
+
+.about {
+	padding: 50px 0;
+
+	@media(min-width: v.$md) {
+		padding: 109px 0 100px;
+	}
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 55px;
+
+		@media(min-width: v.$lg) {
+			gap: 20px;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+	}
+
+	&-left {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		@media(min-width: v.$lg) {
+			max-width: 560px;
+		}
+	}
+
+	&-right {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+
+		img {
+			width: 100%;
+			border-radius: 8px;
+			max-height: 224px;
+			object-fit: cover;
+
+			@media(min-width: v.$sm) {
+				max-height: 448px;
+			}
+		}
+
+		@media(min-width: v.$sm) {
+			gap: 30px;
+			flex-direction: row;
+		}
+
+		@media(min-width: v.$lg) {
+			max-width: 678px;
+		}
+	}
+
+	.actions {
+		width: 100%;
+		margin-top: 25px;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		@media(min-width: v.$md) {
+			margin-top: 30px;
+		}
+
+		button {
+			width: 100%;
+
+			@media(min-width: v.$md) {
+				width: auto;
+			}
+		}
+
+		@media(min-width: v.$md) {
+			flex-direction: row;
+			align-items: center;
+			gap: 20px;
+		}
+	}
+}

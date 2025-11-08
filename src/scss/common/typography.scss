@@ -1,9 +1,11 @@
 @use '../vars/vars' as v;
 @use '../mixins/mixins' as m;
+@use '../mixins/text' as t;
 @use '../utils/placeholders/titles/titles' as *;
 
 h1, .h1, h2, .h2 {
-	@extend %title
+	@extend %title;
+	letter-spacing: 1px;
 }
 
 h1, .h1 {
@@ -20,6 +22,7 @@ h1, .h1 {
 h2,
 .h2 {
 	font-size: 24px;
+	text-transform: uppercase;
 
 	@media(min-width: v.$md) {
 		font-size: 40px;
@@ -44,4 +47,19 @@ p {
 b,
 strong {
 	font-weight: v.$fw-bold
+}
+
+.texts {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+
+	@media(min-width: v.$md) {
+		gap: 15px;
+	}
+
+	p {
+		@include t.text;
+	}
 }
