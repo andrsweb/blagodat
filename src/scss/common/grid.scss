@@ -2,13 +2,12 @@
 
 .container {
 	width: 100%;
-	max-width: v.$max-width;
-	padding: 0 v.$container-padding;
+	max-width: v.$container-width + (v.$container-padding-sm * 2);
+	padding: 0 v.$container-padding-sm;
 	margin: 0 auto;
 
-	&-fluid {
-		width: 100%;
-		max-width: 100%;
-		padding: 0 v.$container-padding
+	@media (min-width: v.$lg) {
+		padding: 0 v.$container-padding-xl;
+		max-width: v.$container-width + (v.$container-padding-xl * 2);
 	}
 }
