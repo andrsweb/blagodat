@@ -1,0 +1,62 @@
+<section class="form">
+    <div class="form-wrapper">
+        <div class="form-inner">
+            <form>
+                <div class="form-title">
+                    <h2>
+                        Бронирование номеров
+                    </h2>
+                    <p>
+                        Заселитесь прямо сейчас!
+                    </p>
+                </div>
+                <fieldset>
+                    <div class="input-group" data-input="checkin">
+                        <div class="input-group-desc">
+                            <span class="input-group-title">Заезд</span>
+                            <span class="input-group-value">23.09.2025</span>
+                        </div>
+                        <input type="date" class="input-hidden" name="checkin">
+                        <img src="/img/calendar-blue.svg" alt="">
+                    </div>
+                    <div class="input-group" data-input="checkout">
+                        <div class="input-group-desc">
+                            <span class="input-group-title">Выезд</span>
+                            <span class="input-group-value">24.09.2025</span>
+                        </div>
+                        <input type="date" class="input-hidden" name="checkout">
+                        <img src="/img/calendar-blue.svg" alt="">
+                    </div>
+                    <div class="input-group" data-input="guests">
+                        <div class="input-group-desc">
+                            <span class="input-group-title">Гости</span>
+                            <span class="input-group-value">2 взрослых, 0 детей</span>
+                        </div>
+                        <img src="/img/user.svg" alt="">
+                        <div class="guests-dropdown">
+                            <div class="guests-item">
+                                <span>Взрослые</span>
+                                <div class="guests-controls">
+                                    <button type="button" class="guests-btn" data-action="decrease" data-target="adults">−</button>
+                                    <span class="guests-count" data-count="adults">2</span>
+                                    <button type="button" class="guests-btn" data-action="increase" data-target="adults">+</button>
+                                </div>
+                            </div>
+                            <div class="guests-item">
+                                <span>Дети</span>
+                                <div class="guests-controls">
+                                    <button type="button" class="guests-btn" data-action="decrease" data-target="children">−</button>
+                                    <span class="guests-count" data-count="children">0</span>
+                                    <button type="button" class="guests-btn" data-action="increase" data-target="children">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="button blue fill">
+                        Найти номер
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>

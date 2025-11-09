@@ -1,0 +1,234 @@
+@use '../../../../../scss/vars/vars' as v;
+@use '../../../../../scss/mixins/text' as t;
+
+.form {
+	padding: 25px 0 15px;
+
+	@media(min-width: v.$md) {
+		padding: 32px 0 25px;
+	}
+
+	&-wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		padding: 0 16px;
+	}
+
+	&-inner {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+		@media(min-width: v.$md) {
+			max-width: 914px;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 25px;
+			width: 100%;
+			padding: 20px 30px;
+			border-radius: 15px;
+			border: 1px solid v.$accent;
+
+			@media(min-width: v.$md) {
+				padding: 25px;
+			}
+
+			.form-title {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 5px;
+
+				h2 {
+					font-family: v.$ff-add;
+					font-weight: v.$fw-regular;
+					font-size: 31px;
+					line-height: 100%;
+					text-align: center;
+					color: v.$accent;
+					text-transform: none;
+
+					@media(min-width: v.$md) {
+						font-size: 47px;
+					}
+
+				}
+
+				p {
+					@include t.text
+				}
+			}
+
+			fieldset {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+
+				@media(min-width: v.$lg) {
+					flex-direction: row;
+					gap: 17px;
+				}
+
+				.input-group {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					border-radius: 15px;
+					border: 1px solid v.$blue;
+					padding: 9px;
+					gap: 10px;
+					width: 100%;
+					position: relative;
+					cursor: pointer;
+
+					@media(min-width: v.$lg) {
+						width: 201px;
+					}
+
+					.input-hidden {
+						position: absolute;
+						opacity: 0;
+						pointer-events: none;
+					}
+
+					&-desc {
+						display: flex;
+						flex-direction: column;
+						align-items: flex-start;
+						gap: 5px;
+					}
+
+					&-title {
+						font-family: v.$ff;
+						font-weight: v.$fw-regular;
+						font-size: 12px;
+						line-height: 100%;
+						color: rgba(33, 35, 40, 0.5);
+
+						@media(min-width: v.$md) {
+							font-size: 13px;
+						}
+					}
+
+					&-value {
+						font-family: v.$ff;
+						font-weight: v.$fw-regular;
+						font-size: 12px;
+						line-height: 100%;
+						color: v.$black;
+
+						@media(min-width: v.$md) {
+							font-size: 13px;
+						}
+					}
+
+					img {
+						width: 25px;
+						height: 25px;
+
+						@media(min-width: v.$md) {
+							width: 26px;
+							height: 26px;
+						}
+					}
+				}
+
+				.guests-dropdown {
+					position: absolute;
+					top: calc(100% + 8px);
+					left: 0;
+					width: 100%;
+					background: v.$white;
+					border: 1px solid v.$blue;
+					border-radius: 15px;
+					padding: 15px;
+					display: none;
+					flex-direction: column;
+					gap: 15px;
+					z-index: 10;
+
+					&.active {
+						display: flex;
+					}
+				}
+
+				.guests-item {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+
+					span {
+						font-family: v.$ff;
+						font-weight: v.$fw-regular;
+						font-size: 13px;
+						line-height: 100%;
+						color: v.$black;
+					}
+				}
+
+				.guests-controls {
+					display: flex;
+					align-items: center;
+					gap: 10px;
+				}
+
+				.guests-btn {
+					width: 24px;
+					height: 24px;
+					border-radius: 50%;
+					border: 1px solid v.$blue;
+					background: v.$white;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					cursor: pointer;
+					font-size: 16px;
+					line-height: 1;
+					color: v.$blue;
+					transition: background 0.2s ease, color 0.2s ease;
+
+					&:hover {
+						background: v.$blue;
+						color: v.$white;
+					}
+
+					&:disabled {
+						opacity: 0.3;
+						cursor: not-allowed;
+
+						&:hover {
+							background: v.$white;
+							color: v.$blue;
+						}
+					}
+				}
+
+				.guests-count {
+					font-family: v.$ff;
+					font-weight: v.$fw-regular;
+					font-size: 14px;
+					line-height: 100%;
+					color: v.$black;
+					min-width: 20px;
+					text-align: center;
+				}
+
+				button {
+					width: 100%;
+
+					@media(min-width: v.$lg) {
+						width: auto;
+					}
+				}
+			}
+		}
+	}
+}
