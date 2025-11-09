@@ -14,6 +14,10 @@
 // Ui
 @forward 'ui/button';
 
+//common
+@forward  '../html/template-parts/header/header';
+@forward  '../html/template-parts/footer/footer';
+
 //components
 @forward  '../html/template-parts/components/title/title';
 
