@@ -1,0 +1,243 @@
+@use '../../../../../scss/vars/vars' as v;
+@use '../../../../../scss/mixins/text' as t;
+
+.hover {
+	padding: 25px 0 100px;
+
+	@media(min-width: v.$md) {
+		padding: 50px 0;
+	}
+
+	&-wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 40px;
+
+		@media(min-width: v.$md) {
+			gap: 55px;
+		}
+	}
+
+	&-top {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 20px;
+
+		@media(min-width: v.$lg) {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		&-left, &-right {
+			width: 100%;
+		}
+
+		&-left {
+			@media(min-width: v.$md) {
+				max-width: 450px;
+			}
+		}
+
+		&-right {
+			@media(min-width: v.$md) {
+				max-width: 560px;
+			}
+		}
+	}
+
+	&-bottom {
+		width: 100%;
+		position: relative;
+		min-height: 370px;
+
+		@media(min-width: v.$lg) {
+			min-height: 448px;
+			width: 100vw;
+			overflow: hidden;
+			margin-left: calc(50% - 50vw);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 100%;
+			height: 70%;
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
+			z-index: 0;
+			pointer-events: none;
+			border-radius: 0 0 8px 8px;
+
+			@media(min-width: v.$lg) {
+				width: 100vw;
+			}
+		}
+
+		.hover-bg {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 100vw;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0;
+			visibility: hidden;
+			transition: opacity 0.6s ease, visibility 0.6s ease;
+			z-index: -1;
+			border-radius: 8px;
+
+			@media(min-width: v.$lg) {
+				border-radius: 0;
+			}
+
+			&-1 {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+		&:has(.slide-1:hover) .hover-bg-1,
+		&:has(.slide-2:hover) .hover-bg-2,
+		&:has(.slide-3:hover) .hover-bg-3,
+		&:has(.slide-1.active) .hover-bg-1,
+		&:has(.slide-2.active) .hover-bg-2,
+		&:has(.slide-3.active) .hover-bg-3 {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.swiper {
+			width: 100%;
+			min-height: 370px;
+			overflow: visible;
+
+			@media(min-width: v.$lg) {
+				height: 448px;
+			}
+
+			&-wrapper {
+				min-height: 370px;
+
+				@media(min-width: v.$lg) {
+					min-height: 448px;
+				}
+			}
+
+			&-actions {
+				width: 100%;
+				position: absolute;
+				left: 0;
+				bottom: -50px;
+				z-index: 2;
+
+				@media(min-width: v.$lg) {
+					display: none;
+					margin-top: 60px;
+				}
+
+				.swiper-scrollbar {
+					position: static;
+					height: 2px;
+
+					&-drag {
+						background-color: v.$accent;
+					}
+				}
+			}
+
+			&-slide {
+				min-height: 370px;
+				position: relative;
+				z-index: 2;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				border-radius: 8px;
+
+				&:last-child {
+					border-right: none;
+				}
+
+				@media(min-width: v.$lg) {
+					min-height: 448px;
+					border-right: 1px solid #DACFC1;
+					border-radius: 0;
+
+					&:hover,
+					&.active {
+						p {
+							max-height: 500px;
+							opacity: 1;
+							visibility: visible;
+							transform: translateY(0);
+						}
+					}
+				}
+			}
+
+			&-wrapper {
+				position: relative;
+				z-index: 2;
+			}
+		}
+	}
+
+	&-bottom-item {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		cursor: pointer;
+
+		@media(min-width: v.$md) {
+			padding: 40px;
+		}
+
+		h3 {
+			position: relative;
+			z-index: 2;
+			margin-bottom: 15px;
+			@include t.accentText(sm);
+
+			& {
+				color: v.$white;
+			}
+		}
+
+		p {
+			font-family: v.$ff;
+			font-weight: v.$fw-regular;
+			font-size: 14px;
+			line-height: 152%;
+			text-align: center;
+			color: v.$white;
+			position: relative;
+			z-index: 2;
+			max-height: 500px;
+			overflow: hidden;
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+			transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease, max-height 0.7s ease;
+
+			@media(min-width: v.$md) {
+				font-size: 16px;
+			}
+
+			@media(min-width: v.$lg) {
+				max-height: 0;
+				opacity: 0;
+				visibility: hidden;
+				transform: translateY(20px);
+			}
+		}
+	}
+}
