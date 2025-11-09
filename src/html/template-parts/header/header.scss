@@ -1,9 +1,372 @@
 @use '../../../scss/vars/vars' as v;
+@use '../../../scss/mixins/text' as t;
+@use '../../../scss/utils/placeholders/buttons/naked' as *;
 
 .header {
-	padding: 20px 0;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	transition: background-color ease-in v.$tr;
 
 	&-wrapper {
+		width: 100%;
+		height: 68px;
 		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid v.$white;
+
+		@media(min-width: v.$md) {
+			height: 85px;
+		}
+	}
+
+	.burger-button {
+		@extend %naked-button;
+		width: 68px;
+		height: 100%;
+		border-left: 1px solid v.$white;
+		border-right: 1px solid v.$white;
+		background-color: rgba(255, 255, 255, 0.5);
+		position: relative;
+		z-index: 101;
+
+		@media(min-width: v.$md) {
+			width: 84px;
+		}
+
+		span {
+			width: 24px;
+			position: relative;
+			height: 1px;
+			border-radius: 8px;
+			background-color: v.$white;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+
+			&:before, &:after {
+				content: '';
+				position: absolute;
+				left: 0;
+				display: block;
+				height: 1px;
+				border-radius: 8px;
+				background-color: v.$white;
+				transition: transform 0.3s ease, width 0.3s ease, top 0.3s ease;
+			}
+
+			&:before {
+				top: -10px;
+				width: 31px;
+			}
+
+			&:after {
+				top: 10px;
+				width: 16px;
+			}
+		}
+	}
+
+	&.is-active .burger-button span {
+		background-color: transparent;
+
+		&:before {
+			transform: rotate(45deg);
+			top: 0;
+			width: 24px;
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+			top: 0;
+			width: 24px;
+		}
+	}
+
+	&-text {
+		margin: 0 auto;
+		text-shadow: 1px 1px 10px rgba(255, 255, 255, 1);
+		@include t.accentText;
+
+		& {
+			color: v.$white;
+		}
+
+		@media(min-width: v.$md) {
+			margin: 0 auto 0 40px;
+		}
+	}
+
+	.question {
+		width: 68px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		border-left: 1px solid v.$white;
+		border-right: 1px solid v.$white;
+		background-color: rgba(255, 255, 255, 0.5);
+		cursor: pointer;
+
+		@media(min-width: v.$md) {
+			width: 297px;
+		}
+
+		.text {
+			display: none;
+			font-family: v.$ff;
+			font-weight: v.$fw-light;
+			font-size: 16px;
+			line-height: 100%;
+			text-transform: uppercase;
+			color: v.$white;
+
+
+			@media(min-width: v.$md) {
+				display: block;
+			}
+		}
+
+		.ico {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@media(min-width: v.$md) {
+				display: none;
+			}
+		}
+	}
+
+	.burger-button, .question {
+		backdrop-filter: blur(3px);
+		transition: background-color ease v.$tr;
+
+		&:hover {
+			opacity: 1;
+			background-color: v.$blue;
+		}
+	}
+
+	.burger-menu {
+		opacity: 0;
+		visibility: hidden;
+		overflow: hidden;
+		position: fixed;
+		top: 68px;
+		left: 0;
+		width: 100%;
+		height: calc(100vh - 68px);
+		background: v.$white;
+		z-index: 99;
+		transform: translateY(100%);
+		overflow-y: auto;
+		transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+
+		@media(min-width: v.$md) {
+			top: 85px;
+			height: calc(100vh - 85px);
+		}
+
+		&-inner {
+			max-width: 660px;
+			margin: 0 auto;
+			padding: 60px 27px 40px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: stretch;
+			min-height: calc(100vh - 85px);
+
+			@media(min-width: v.$md) {
+				flex-direction: row;
+				align-items: flex-start;
+			}
+		}
+
+		&-left {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			position: relative;
+
+			@media(min-width: v.$md) {
+				flex: 1 1 calc(50% - 50px);
+				align-items: flex-start;
+				padding-right: 60px;
+			}
+
+			@media(min-width: v.$md) {
+				&::after {
+					content: '';
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 1px;
+					height: 100%;
+					background-color: rgba(33, 35, 40, 0.2);
+				}
+			}
+		}
+
+		&-right {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			row-gap: 20px;
+
+			@media(min-width: v.$md) {
+				flex: 1 1 50%;
+				align-items: flex-end;
+			}
+		}
+	}
+
+	&.is-active {
+		background-color: v.$white;
+
+		.burger-button, .header-wrapper, .question {
+			border-color: v.$black;
+		}
+
+		.burger-button {
+			span:before, span:after {
+				background-color: v.$black;
+			}
+		}
+
+		.header-text {
+			color: v.$accent;
+			text-shadow: 1px 1px 10px v.$accent;
+		}
+
+		.question {
+			background-color: v.$blue;
+
+			@media(min-width: v.$md) {
+				background-color: rgba(255, 255, 255, 0.5);
+			}
+
+			.text {
+				color: v.$black;
+			}
+
+		}
+
+		.burger-menu {
+			opacity: 1;
+			visibility: visible;
+			transform: translateY(0);
+		}
+	}
+
+	.burger-nav {
+		margin-bottom: 50px;
+
+		@media(min-width: v.$md) {
+			margin-bottom: 0;
+		}
+
+		.menu {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+
+			@media(min-width: v.$md) {
+				gap: 44px;
+			}
+		}
+
+		.menu-item {
+			display: flex;
+			justify-content: center;
+
+			@media(min-width: v.$md) {
+				justify-content: flex-start;
+			}
+
+			a {
+				font-family: v.$ff;
+				font-weight: v.$fw-light;
+				font-size: 12px;
+				line-height: 100%;
+				color: v.$black;
+				position: relative;
+
+				@media(min-width: v.$md) {
+					font-size: 14px;
+				}
+
+				&::after {
+					content: '';
+					position: absolute;
+					bottom: -5px;
+					left: 0;
+					width: 0;
+					height: 1px;
+					background: v.$accent;
+					transition: width 0.3s ease;
+				}
+
+				&:hover {
+					opacity: 1;
+					color: v.$accent;
+
+					&::after {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	.burger-cards {
+		width: 100%;
+		list-style: none;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		align-items: flex-start;
+
+		@media(min-width: v.$md) {
+			padding-left: 50px;
+			align-items: flex-end;
+		}
+	}
+
+	.burger-cards-item {
+		width: 100%;
+	}
+
+	.burger-card {
+		width: 100%;
+		min-height: 109px;
+		background-color: rgba(248, 243, 237, 1);
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 20px;
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+		@media(min-width: v.$lg) {
+			min-width: 340px;
+			min-height: 120px;
+		}
+
+		&:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+		}
+
+		&-text {
+			@include t.accentText(sm);
+		}
 	}
 }
