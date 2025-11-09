@@ -1,0 +1,152 @@
+@use '../../../../../scss/vars/vars.scss' as v;
+@use '../../../../../scss/mixins/text' as t;
+@use '../../../../../scss/utils/placeholders/buttons/naked' as *;
+
+.slides {
+	padding: 25px 0 20px;
+
+	@media(min-width: v.$md) {
+		padding: 50px 0 50px;
+	}
+
+	&-wrapper {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 40px;
+
+
+		@media(min-width: v.$md) {
+			gap: 53px;
+		}
+	}
+
+	&-top {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 5px;
+		border-top: 1px solid v.$brown;
+		padding-top: 45px;
+
+		@media(min-width: v.$md) {
+			padding-top: 45px;
+		}
+
+		@media(min-width: v.$lg) {
+			gap: 20px;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		&-left {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			@media(min-width: v.$md) {
+				max-width: 581px;
+			}
+		}
+
+		&-right {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+
+			@media(min-width: v.$md) {
+				max-width: 560px;
+			}
+		}
+	}
+
+	&-bottom {
+		width: 100%;
+
+		.swiper {
+			&-slide {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 20px;
+
+				&-img {
+					width: 100%;
+					height: 370px;
+
+					@media(min-width: v.$lg) {
+						height: 448px;
+					}
+
+					img {
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						border-radius: 8px;
+					}
+				}
+
+				&-info {
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 10px;
+
+					h3 {
+						@include t.accentText(sm)
+					}
+
+					p {
+						@include t.text
+					}
+				}
+			}
+
+			&-actions {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				gap: 13px;
+				margin-top: 50px;
+
+				@media(min-width: v.$lg) {
+					margin-top: 60px;
+				}
+
+				.swiper-buttons {
+					display: none;
+					align-items: center;
+
+					@media(min-width: v.$lg) {
+						display: flex;
+					}
+
+					button {
+						@extend %naked-button;
+						width: 32px;
+						height: 32px;
+					}
+
+					.swiper-prev {
+						img {
+							transform: scaleX(-1);
+						}
+					}
+				}
+
+				.swiper-scrollbar {
+					height: 2px;
+					position: static;
+
+					&-drag {
+						background-color: v.$accent;
+					}
+				}
+			}
+		}
+	}
+}

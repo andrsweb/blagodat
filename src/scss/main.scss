@@ -1,3 +1,6 @@
+//libs
+@forward "node_modules/swiper/swiper-bundle.min.css";
+
 // Defaults styles.
 @forward 'common/fonts';
 @forward 'vars/vars';
@@ -20,4 +23,5 @@
 @forward  '../html/template-parts/sections/home/pools/pools';
 @forward  '../html/template-parts/sections/home/food/food';
 @forward  '../html/template-parts/sections/home/child/child';
+@forward  '../html/template-parts/sections/home/slides/slides';
 
